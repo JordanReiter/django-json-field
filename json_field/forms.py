@@ -25,8 +25,8 @@ class JSONFormField(fields.Field):
         value = super(JSONFormField, self).clean(value)
 
         # allow an empty value on an optional field
-        if value is None:
-            return value
+        if value is None or value=="":
+            return None
 
         ## Got to get rid of newlines for validation to work
         # Data newlines are escaped so this is safe
